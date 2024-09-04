@@ -1,4 +1,4 @@
--- Natural numbers
+-- Natural numbers representation
 data Nat = Zero | Succ Nat deriving Show
 
 
