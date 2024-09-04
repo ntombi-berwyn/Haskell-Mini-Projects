@@ -95,7 +95,7 @@ change old new grid = start ++ [(fstToChange, snd)] ++ mid ++ [(sndToChange, fst
 main = do
   showSolution(example1)
   showSolution(example2)
-  --showSolution(example3)    Doesn't terminate in a reasonable amount of time
+  --showSolution(example3)    Doesn't terminate in a reasonable amount of time.
   showSolution(example4)
   showSolution(solution)
 
