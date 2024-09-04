@@ -1,2 +1,2 @@
 # Haskell-Mini-Projects
-A collection of small Haskell projects.
+A collection of small Haskell projects and exercises.
