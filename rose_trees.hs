@@ -7,6 +7,13 @@
 data RTree a b = RTree a b [RTree a b] deriving (Eq, Show)
 
 
+-- Rose Tree equality
+instance (Eq a, Eq b) => Eq (RTree a b) where
+        RTree p q [] == RTree r s [] = (p == r && q == s)
+        RTree p q xs == RTree r s ys = (p == r && q == s && xs == ys)
+
+
+-- Depth First Search
 dfs :: Eq a => a -> RTree a b -> [b]
 dfs x (RTree p q rs) | p == x     = concat ([q] : (map (dfs x) rs))
                      | otherwise  = concat (map (dfs x) rs)
@@ -20,6 +27,7 @@ dfs x (RTree p q rs) | p == x     = concat ([q] : (map (dfs x) rs))
 -}
 
 
+-- Breadth First Search
 bfs :: Eq a => a -> RTree a b -> [b]
 bfs x (RTree p q rs) = f x [RTree p q rs] []
         where f x [] ys = reverse ys
@@ -36,9 +44,16 @@ main = do
         print (dfs "banana" tree)
         print (bfs "banana" tree)
 
+        print (RTree 1 2 [] == RTree 1 2 [])
+        print (RTree 1 2 [RTree 3 4 []] == RTree 1 2 [])
+        print (RTree 1 2 [RTree 3 4 []] == RTree 1 2 [RTree 4 5 [], RTree 5 6 []])
+
 {- Output:
       ["red","round","crunchy","delicious"]
       ["red","crunchy","round","delicious"]
       ["soft","yellow"]
       ["yellow","soft"]
+      True
+      False
+      False
 -}
