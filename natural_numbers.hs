@@ -1,6 +1,7 @@
 -- Natural numbers
 data Nat = Zero | Succ Nat deriving Show
 
+
 -- Recursive operations
 int :: Nat -> Int
 int Zero = 0
@@ -59,7 +60,6 @@ pow' x = foldNat (mul x) (Succ Zero)
 
 tet' :: Nat -> Nat -> Nat
 tet' x = foldNat (pow x) (Succ Zero)
-
 
 
 main = do
